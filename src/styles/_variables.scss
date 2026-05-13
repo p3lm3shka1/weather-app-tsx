@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+$font: "Poppins", sans-serif;
+
+$gradient: linear-gradient(
+  135deg,
+  rgb(228, 182, 193) 0%,
+  rgb(154, 200, 232) 100%
+);
+
+$spacing-0-5: 0.5rem;
+$spacing-1: 1rem;
+$spacing-2: 2rem;
+
+$color-text: #000;
+$color-white: #fff;
+$color-glass: rgba(255, 255, 255, 0.75);
+$color-border: rgba(0, 0, 0, 0.15);
+
+$color-accent: #79c6f2;
+$color-danger: #ff5a7a;
+$color-temp: #1f2430;
+
+$radius-input: 10px;
+$radius-panel: 14px;
+$radius-card: 22px;
+
+$shadow-panel: 0 12px 30px rgba(0, 0, 0, 0.12);
+$shadow-card: 0 18px 45px rgba(0, 0, 0, 0.15);
+
+$loader-size: 40px;
+$loader-border: 4px;
+$loader-track: rgba(255, 255, 255, 0.3);
+$loader-head: $color-white;
+
+$app-max-width: 520px;
+
+$blur-card: 8px;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

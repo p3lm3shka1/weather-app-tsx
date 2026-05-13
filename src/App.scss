@@ -1,0 +1,181 @@
+@use "./styles/variables" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: $font;
+}
+
+body {
+  background: $gradient;
+  color: $color-text;
+}
+
+.weather-app {
+  @include flex-center;
+  flex-direction: column;
+  min-height: 100vh;
+  gap: $spacing-2;
+}
+
+.weather {
+  display: flex;
+  align-items: center;
+  gap: $spacing-1;
+  background: $color-white;
+  padding: $spacing-1;
+  border-radius: $radius-panel;
+  box-shadow: $shadow-panel;
+
+  &__input {
+    width: 260px;
+    padding: $spacing-0-5 $spacing-1;
+    border-radius: $radius-input;
+    border: 1px solid $color-border;
+    outline: none;
+    font-size: 16px;
+
+    &::placeholder {
+      opacity: 0.6;
+      font-style: italic;
+    }
+  }
+
+  &__button {
+    padding: $spacing-0-5 $spacing-2;
+    border: none;
+    border-radius: $radius-input;
+    background: $color-accent;
+    color: $color-white;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      background: $color-white;
+      color: $color-accent;
+      border: 1px solid $color-accent;
+    }
+  }
+}
+
+.weather-card {
+  width: min($app-max-width, calc(100vw - 32px));
+  background: $color-glass;
+  border-radius: $radius-card;
+  padding: $spacing-2;
+  box-shadow: $shadow-card;
+  backdrop-filter: blur($blur-card);
+  text-align: center;
+
+  &__error {
+    @include flex-center;
+    flex-direction: column;
+    color: $color-danger;
+    font-weight: 700;
+    font-size: 32px;
+
+    svg {
+      font-size: 48px;
+      margin-bottom: $spacing-1;
+    }
+  }
+
+  &__city {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    margin-bottom: $spacing-1;
+  }
+
+  &__datetime {
+    font-size: 16px;
+    opacity: 0.8;
+    margin-bottom: $spacing-2;
+  }
+
+  &__temp {
+    font-size: 84px;
+    font-weight: 800;
+    line-height: 1;
+    margin: $spacing-1 0 $spacing-2;
+    color: $color-temp;
+
+    span {
+      font-size: 22px;
+      font-weight: 700;
+      vertical-align: auto;
+      opacity: 0.85;
+    }
+  }
+
+  &__desc {
+    margin-top: 2px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $color-danger;
+    font-weight: 800;
+    margin-bottom: $spacing-2;
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-2;
+    margin-top: $spacing-2;
+  }
+
+  &__statvalue {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: $spacing-1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      font-size: 24px;
+      margin-left: 4px;
+    }
+  }
+
+  &__statlabel {
+    font-size: 16px;
+    opacity: 0.85;
+    font-weight: 600;
+  }
+}
+
+.loader {
+  border: $loader-border solid $loader-track;
+  border-top: $loader-border solid $loader-head;
+  width: $loader-size;
+  height: $loader-size;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .weather {
+    flex-direction: column;
+    align-items: stretch;
+
+    &__input,
+    &__button {
+      width: 100%;
+    }
+  }
+}
