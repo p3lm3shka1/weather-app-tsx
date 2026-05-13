@@ -13,7 +13,17 @@ import Footer from "./components/Footer/Footer";
 
 import type { WeatherData } from "./types/WeatherData";
 
-const API_KEY = "45b978eac9758fd51194fcae8ba96a43";
+const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY as string;
+if (!API_KEY) {
+  throw new Error(
+    "API key is missing. Please set VITE_OPENWEATHER_API_KEY in your .env file.",
+  );
+}
+
+// console.log(
+//   "API KEY present:",
+//   Boolean(import.meta.env.VITE_OPENWEATHER_API_KEY),
+// );
 
 const App = () => {
   const [, setCity] = useState("");
