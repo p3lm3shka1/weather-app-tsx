@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   gap: $spacing-1;
-  background: rgba($color-glass, 0.4);
+  background: $color-glass;
   padding: $spacing-2;
   border-radius: $radius-panel;
   box-shadow: $shadow-panel;
@@ -24,11 +24,15 @@
       opacity: 0.6;
       font-style: italic;
     }
+    &:focus {
+      border-color: $color-accent;
+    }
   }
 
   &__button {
+    box-sizing: border-box;
     padding: $spacing-0-5 $spacing-2;
-    border: none;
+    border: 1px solid transparent;
     border-radius: $radius-input;
     background: $color-accent;
     color: $color-white;
@@ -36,9 +40,11 @@
     font-size: 16px;
     height: auto;
     cursor: pointer;
+    transform: none;
     @include transition;
 
     &:hover {
+      transform: none;
       background: $color-white;
       color: $color-accent;
       border: 1px solid $color-accent;

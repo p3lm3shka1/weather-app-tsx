@@ -3,7 +3,7 @@
 
 .weather-card {
   width: $card-max-width;
-  background: rgba($color-glass, 0.4);
+  background: $color-glass;
   border-radius: $radius-card;
   padding: $spacing-2;
   box-shadow: $shadow-card;

@@ -11,7 +11,7 @@
   }
 
   &__card {
-    background: rgba($color-glass, 0.4);
+    background: $color-glass;
     border-radius: $radius-panel;
     padding: $spacing-1 $spacing-0-5;
     box-shadow: $shadow-card;
