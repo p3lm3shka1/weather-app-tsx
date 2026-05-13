@@ -1,0 +1,42 @@
+@use "../../styles/variables" as *;
+@use "../../styles/media" as *;
+
+.forecast {
+  width: $card-max-width;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: $spacing-1;
+  }
+
+  &__card {
+    background: rgba($color-glass, 0.4);
+    border-radius: $radius-panel;
+    padding: $spacing-1 $spacing-0-5;
+    box-shadow: $shadow-card;
+    backdrop-filter: blur($blur-card);
+    text-align: center;
+  }
+
+  &__day {
+    font-weight: 800;
+    font-size: 12px;
+    margin-bottom: $spacing-1;
+    text-transform: uppercase;
+    color: $color-temp;
+  }
+
+  &__icon {
+    width: 44px;
+    height: 44px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  &__t {
+    font-weight: 900;
+    font-size: 18px;
+    margin-top: $spacing-1;
+  }
+}

@@ -1,9 +1,10 @@
-import type { WeatherData } from "../types/WeatherData";
+import type { WeatherData } from "../../types/WeatherData";
 
 import { WiHumidity, WiStrongWind } from "react-icons/wi";
+
 import { MdErrorOutline } from "react-icons/md";
 
-import "../App.scss";
+import "./WeatherCard.scss";
 
 type Props = { data: WeatherData; error?: string };
 
@@ -19,6 +20,7 @@ const WeatherCard = ({ data, error }: Props) => {
     );
   }
   const w = data.weather?.[0];
+  const iconUrl = w ? `https://openweathermap.org/img/wn/${w.icon}@2x.png` : "";
 
   const dateText = new Date(data.dt * 1000).toLocaleDateString("en-US", {
     timeZone: "Europe/Vilnius",
@@ -37,13 +39,22 @@ const WeatherCard = ({ data, error }: Props) => {
 
   return (
     <div className="weather-card">
-      <div className="weather-card__city">{data.name}</div>
+      <div className="weather-card__city">
+        {data.name}, {data.sys.country}
+      </div>
 
       <div className="weather-card__datetime">
         {dateText} • {timeText}
       </div>
 
       <div className="weather-card__temp">
+        {w && (
+          <img
+            src={iconUrl}
+            alt={w.description}
+            className="weather-card__icon"
+          />
+        )}
         {Math.round(data.main.temp)}
         <span>°C</span>
       </div>
@@ -51,20 +62,24 @@ const WeatherCard = ({ data, error }: Props) => {
       <div className="weather-card__desc">{w?.description ?? ""}</div>
 
       <div className="weather-card__stats">
-        <div>
-          <div className="weather-card__statvalue">
-            {data.wind.speed.toFixed(2)}
-            <WiStrongWind />
+        <div className="weather-card__container">
+          <WiStrongWind />
+          <div>
+            <div className="weather-card__statvalue">
+              {data.wind.speed.toFixed(2)}&nbsp;<span> m/s</span>
+            </div>
+            <div className="weather-card__statlabel">Wind speed</div>
           </div>
-          <div className="weather-card__statlabel">Wind speed</div>
         </div>
 
-        <div>
-          <div className="weather-card__statvalue">
-            {data.main.humidity}
-            <WiHumidity />
+        <div className="weather-card__container">
+          <WiHumidity />
+          <div>
+            <div className="weather-card__statvalue">
+              {data.main.humidity}&nbsp;<span> %</span>
+            </div>
+            <div className="weather-card__statlabel">Humidity</div>
           </div>
-          <div className="weather-card__statlabel">Humidity</div>
         </div>
       </div>
     </div>

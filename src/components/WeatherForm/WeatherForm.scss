@@ -1,0 +1,52 @@
+@use "../../styles/variables" as *;
+@use "../../styles/media" as *;
+
+.weather {
+  width: $card-max-width;
+  display: flex;
+  align-items: center;
+  gap: $spacing-1;
+  background: rgba($color-glass, 0.4);
+  padding: $spacing-2;
+  border-radius: $radius-panel;
+  box-shadow: $shadow-panel;
+
+  &__input {
+    width: 350px;
+    height: auto;
+    padding: $spacing-0-5 $spacing-1;
+    border-radius: $radius-input;
+    border: 1px solid $color-border;
+    outline: none;
+    font-size: 16px;
+
+    &::placeholder {
+      opacity: 0.6;
+      font-style: italic;
+    }
+  }
+
+  &__button {
+    padding: $spacing-0-5 $spacing-2;
+    border: none;
+    border-radius: $radius-input;
+    background: $color-accent;
+    color: $color-white;
+    font-weight: 700;
+    font-size: 16px;
+    height: auto;
+    cursor: pointer;
+    @include transition;
+
+    &:hover {
+      background: $color-white;
+      color: $color-accent;
+      border: 1px solid $color-accent;
+    }
+  }
+
+  &__button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

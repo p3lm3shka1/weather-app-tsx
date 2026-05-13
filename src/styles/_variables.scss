@@ -33,7 +33,8 @@ $loader-border: 4px;
 $loader-track: rgba(255, 255, 255, 0.3);
 $loader-head: $color-white;
 
-$app-max-width: 520px;
+$app-max-width: 600px;
+$card-max-width: min($app-max-width, calc(100vw - 32px));
 
 $blur-card: 8px;
 
@@ -41,4 +42,8 @@ $blur-card: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@mixin transition {
+  transition: all 0.3s ease;
 }

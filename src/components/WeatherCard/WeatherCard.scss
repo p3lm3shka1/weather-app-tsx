@@ -1,0 +1,97 @@
+@use "../../styles/variables" as *;
+@use "../../styles/media" as *;
+
+.weather-card {
+  width: $card-max-width;
+  background: rgba($color-glass, 0.4);
+  border-radius: $radius-card;
+  padding: $spacing-2;
+  box-shadow: $shadow-card;
+  backdrop-filter: blur($blur-card);
+  text-align: center;
+
+  &__icon {
+    vertical-align: middle;
+    margin-right: $spacing-1;
+  }
+
+  &__error {
+    @include flex-center;
+    flex-direction: column;
+    color: $color-danger;
+    font-weight: 700;
+    font-size: 32px;
+
+    svg {
+      font-size: 48px;
+      margin-bottom: $spacing-1;
+    }
+  }
+
+  &__city {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    margin-bottom: $spacing-1;
+  }
+
+  &__datetime {
+    font-size: 16px;
+    opacity: 0.8;
+    margin-bottom: $spacing-2;
+  }
+
+  &__temp {
+    font-size: 84px;
+    font-weight: 800;
+    line-height: 1;
+    margin: $spacing-1 0 $spacing-2;
+    color: $color-temp;
+
+    span {
+      font-size: 22px;
+      font-weight: 700;
+      vertical-align: auto;
+      opacity: 0.85;
+    }
+  }
+
+  &__desc {
+    margin-top: 2px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $color-danger;
+    font-weight: 800;
+    margin-bottom: $spacing-2;
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-1;
+  }
+
+  &__container {
+    @include flex-center;
+    gap: 0.5rem;
+
+    svg {
+      font-size: 50px;
+      color: $color-accent;
+    }
+  }
+
+  &__statvalue {
+    font-size: 20px;
+    font-weight: 800;
+    justify-content: flex-start;
+    display: flex;
+  }
+
+  &__statlabel {
+    font-size: 16px;
+    opacity: 0.85;
+    font-weight: 600;
+  }
+}

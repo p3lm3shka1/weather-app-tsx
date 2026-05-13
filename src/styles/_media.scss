@@ -1,0 +1,77 @@
+@use "./variables" as *;
+
+@media (max-width: 992px) {
+  .forecast__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .weather {
+    flex-direction: column;
+    align-items: stretch;
+    gap: $spacing-1;
+
+    &__input,
+    &__button {
+      width: 100%;
+    }
+  }
+
+  .weather-card {
+    padding: 22px;
+
+    &__city {
+      font-size: 26px;
+    }
+
+    &__temp {
+      font-size: 64px;
+    }
+
+    &__desc {
+      font-size: 16px;
+    }
+
+    &__icon {
+      width: 74px;
+      height: 74px;
+    }
+  }
+
+  .forecast__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 380px) {
+  .weather-card {
+    padding: 18px;
+
+    &__temp {
+      font-size: 56px;
+    }
+  }
+
+  .forecast__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1200px) {
+  .weather-card {
+    padding: 34px;
+
+    &__city {
+      font-size: 36px;
+    }
+
+    &__temp {
+      font-size: 88px;
+    }
+  }
+
+  .forecast__card {
+    min-height: 160px;
+  }
+}

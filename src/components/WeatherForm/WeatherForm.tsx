@@ -1,15 +1,20 @@
 import { useRef } from "react";
 
+import "./WeatherForm.scss";
+
 type WeatherProps = {
   setCity: React.Dispatch<React.SetStateAction<string>>;
   onSubmitCity: (city: string) => void;
+  loading: boolean;
 };
 
-const WeatherForm = ({ setCity, onSubmitCity }: WeatherProps) => {
+const WeatherForm = ({ setCity, onSubmitCity, loading }: WeatherProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (loading) return;
+
     const value = inputRef.current?.value?.trim() ?? "";
     if (!value) return;
 
@@ -27,9 +32,11 @@ const WeatherForm = ({ setCity, onSubmitCity }: WeatherProps) => {
         placeholder="Enter city name"
         className="weather__input"
         ref={inputRef}
+        disabled={loading}
       />
-      <button type="submit" className="weather__button">
-        Get Weather
+
+      <button type="submit" className="weather__button" disabled={loading}>
+        {loading ? "Loading..." : "Get Weather"}
       </button>
     </form>
   );
