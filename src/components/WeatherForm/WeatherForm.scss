@@ -11,6 +11,10 @@
   border-radius: $radius-panel;
   box-shadow: $shadow-panel;
 
+  &__field {
+    position: relative;
+  }
+
   &__input {
     width: 350px;
     height: auto;
@@ -54,5 +58,36 @@
   &__button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  &__field--error {
+    .weather__input {
+      border-color: $color-danger;
+    }
+  }
+
+  &__field--shake {
+    animation: shaker 280ms ease-in-out;
+  }
+}
+
+@keyframes shaker {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(8px);
+  }
+  60% {
+    transform: translateX(-6px);
+  }
+  80% {
+    transform: translateX(6px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }

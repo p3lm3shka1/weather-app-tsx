@@ -6,7 +6,10 @@ import { MdErrorOutline } from "react-icons/md";
 
 import "./WeatherCard.scss";
 
-type Props = { data: WeatherData; error?: string };
+type Props = {
+  data: WeatherData;
+  error?: string;
+};
 
 const WeatherCard = ({ data, error }: Props) => {
   if (error) {
@@ -21,17 +24,18 @@ const WeatherCard = ({ data, error }: Props) => {
   }
   const w = data.weather?.[0];
   const iconUrl = w ? `https://openweathermap.org/img/wn/${w.icon}@2x.png` : "";
+  const cityTime = (data.dt + data.timezone) * 1000;
 
-  const dateText = new Date(data.dt * 1000).toLocaleDateString("en-US", {
-    timeZone: "Europe/Vilnius",
+  const dateText = new Date(cityTime).toLocaleDateString("en-US", {
+    timeZone: "UTC",
     weekday: "long",
     year: "numeric",
     month: "long",
     day: "numeric",
   });
 
-  const timeText = new Date(data.dt * 1000).toLocaleTimeString("lt-LT", {
-    timeZone: "Europe/Vilnius",
+  const timeText = new Date(cityTime).toLocaleTimeString("lt-LT", {
+    timeZone: "UTC",
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,

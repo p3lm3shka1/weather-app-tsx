@@ -30,7 +30,7 @@ const App = () => {
   const { data, loading, makeApiCall, error } = useFetch();
 
   const handleSubmitCity = (city: string) => {
-    const URL_API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+    const URL_API = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`;
 
     makeApiCall(URL_API);
   };
