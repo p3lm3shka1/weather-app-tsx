@@ -28,10 +28,11 @@ const WeatherCard = ({ data, error }: Props) => {
     day: "numeric",
   });
 
-  const timeText = new Date(data.dt * 1000).toLocaleTimeString("en-US", {
+  const timeText = new Date(data.dt * 1000).toLocaleTimeString("lt-LT", {
     timeZone: "Europe/Vilnius",
     hour: "2-digit",
     minute: "2-digit",
+    hour12: false,
   });
 
   return (

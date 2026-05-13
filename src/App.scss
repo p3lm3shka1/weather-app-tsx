@@ -125,17 +125,13 @@ body {
   &__stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: $spacing-2;
-    margin-top: $spacing-2;
+    gap: $spacing-1;
   }
 
   &__statvalue {
     font-size: 20px;
     font-weight: 800;
-    margin-bottom: $spacing-1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
 
     svg {
       font-size: 24px;
